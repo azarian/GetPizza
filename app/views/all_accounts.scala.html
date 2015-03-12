@@ -1,0 +1,11 @@
+@(accounts: List[Account])
+
+@main("Get Pizza") {
+<h1>Accounts</h1>
+
+<ul>
+    @for(account <- accounts) {
+    <li>@account.name</li>
+    }
+</ul>
+}
