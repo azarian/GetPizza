@@ -18,6 +18,10 @@ public class Application extends Controller {
         return ok(index.render(form,""));
     }
 
+    public static Result index2() {
+        return ok(index2.render());
+    }
+
     public static Result createAccount(String account_name) {
         System.out.println("createAccount: account_name = " + account_name);
         Account account = new Account();

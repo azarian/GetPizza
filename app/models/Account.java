@@ -19,6 +19,8 @@ public class Account extends Model {
     @Constraints.Required
     public String name;
 
+    public Menu menu;
+
 
     public Account() {
     }

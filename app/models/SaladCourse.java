@@ -3,5 +3,5 @@ package models;
 /**
  * Created by nazaria on 3/20/2015.
  */
-public class SaladCourse {
+public class SaladCourse extends Course {
 }
