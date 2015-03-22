@@ -78,15 +78,15 @@ public class AccountTest {
        /* Long lastId = getLastId();
 
         Budget budget = new Budget();
-        budget.name = "test budget";
+        budget.accountName = "test budget";
         budget.createDate = new Date();
         budget.save();
 
         Budget savedBudget = Budget.find.byId(lastId + 1);
         assertThat(savedBudget.id).isNotNull();
         assertThat(savedBudget.createDate).isNotNull();
-        assertThat(savedBudget.name).isNotNull();
-        assertThat(savedBudget.name).isEqualTo("test budget");*/
+        assertThat(savedBudget.accountName).isNotNull();
+        assertThat(savedBudget.accountName).isEqualTo("test budget");*/
     }
 
     @Test
@@ -110,14 +110,14 @@ public class AccountTest {
 
         Budget existingBudget = Ebean.find(Budget.class, lastId);
 
-        String newName = existingBudget.name + "foo";
+        String newName = existingBudget.accountName + "foo";
         existingBudget.setName(newName);
 
         Ebean.update(existingBudget);
 
         Budget updatedBudget = Ebean.find(Budget.class, lastId);
         assertThat(updatedBudget.id).isEqualTo(lastId);
-        assertThat(updatedBudget.name).isEqualTo(newName);*/
+        assertThat(updatedBudget.accountName).isEqualTo(newName);*/
     }
 
 
@@ -127,18 +127,18 @@ public class AccountTest {
        /* Long lastId = getLastId();
 
         Budget existingBudget = Budget.find.byId(lastId);
-        String existingName = existingBudget.name;
+        String existingName = existingBudget.accountName;
 
         String newName = existingName + "foo";
 
-        Ebean.createSqlUpdate("update budget set name = :newName where id = :id")
+        Ebean.createSqlUpdate("update budget set accountName = :newName where id = :id")
                 .setParameter("newName", newName)
                 .setParameter("id", lastId)
                 .execute();
 
         Budget updatedBudget = Budget.find.byId(lastId);
         assertThat(updatedBudget.id).isEqualTo(lastId);
-        assertThat(updatedBudget.name).isEqualTo(newName);*/
+        assertThat(updatedBudget.accountName).isEqualTo(newName);*/
     }
 
     private Long getLastId() {

@@ -18,16 +18,16 @@ public class Account extends Model {
 
     @Constraints.Required
     public String name;
+    @Constraints.Required
+    public String email;
+    @Constraints.Required
+    public String password;
+
 
     public Menu menu;
 
 
     public Account() {
-    }
-
-    public Account(Long id, String name) {
-        this.id = id;
-        this.name = name;
     }
 
     public static Finder<Long,Account> find = new Finder<>(

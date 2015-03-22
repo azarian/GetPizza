@@ -5,6 +5,8 @@
 # Home page
 GET     /                           controllers.Application.index2()
 
+GET     /signup                     controllers.Application.signUp()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
@@ -12,4 +14,4 @@ GET     /accounts/create/:account_name      controllers.Application.createAccoun
 
 GET     /accounts/all             controllers.Application.getAllAccounts()
 
-POST    /                           controllers.Application.postIndex()
+POST    /signup                     controllers.Application.postSignUp()

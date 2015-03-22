@@ -1,0 +1,21 @@
+@import helper._
+@main("Get Pizza") {
+
+
+    @form(routes.Application.postSignUp()) {
+        <div class="form-group">
+            <label for="name">Account Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Account Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="inputEmail" class="form-control" name="email" id="email" placeholder="Enter inputEmail">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    }
+
+}
