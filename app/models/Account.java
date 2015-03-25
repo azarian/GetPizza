@@ -34,4 +34,8 @@ public class Account extends Model {
             Long.class, Account.class
     );
 
+    public static boolean validate(String email, String password) {
+        //todo implement
+        return true;
+    }
 }

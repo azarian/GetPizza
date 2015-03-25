@@ -5,6 +5,7 @@ import play.data.Form;
 import play.mvc.*;
 
 
+import views.SignInFormDate;
 import views.SignUpFormData;
 import views.html.*;
 
@@ -14,12 +15,27 @@ public class Application extends Controller {
 
 
 
-    public static Result index2() {
-        return ok(index2.render());
+    public static Result index() {
+        return ok(index.render());
     }
     public static Result signUp() {
         return ok(signUp.render());
     }
+
+    public static Result authenticate() {
+        Form<SignInFormDate> loginForm = Form.form(SignInFormDate.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+            //send the bad form
+            System.out.println("Login Failed!");
+            return badRequest(index.render());
+        } else {
+            System.out.println("Login Succeed!");
+            session().clear();
+            session("email", loginForm.get().email);
+            return redirect("/accounts/all");
+        }
+    }
+
 
     public static Result createAccount(String account_name) {
         System.out.println("createAccount: account_name = " + account_name);
@@ -28,7 +44,7 @@ public class Application extends Controller {
         account.save();
         return ok();
     }
-
+    @Security.Authenticated(Secured.class)
     public static Result getAllAccounts() {
         List<Account> accounts = Account.find.all();
         return ok(all_accounts.render(accounts));
@@ -53,7 +69,7 @@ public class Application extends Controller {
             account.password = formData.get().password;
             System.out.println("got " + formData.get().name);
             account.save();
-            return ok(index2.render());
+            return redirect("/accounts/all");
         }
     }
 

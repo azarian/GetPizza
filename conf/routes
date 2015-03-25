@@ -3,15 +3,17 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index2()
+GET         /                                     controllers.Application.index()
+POST    /                                         controllers.Application.authenticate()
 
-GET     /signup                     controllers.Application.signUp()
+GET         /signup                               controllers.Application.signUp()
+POST        /signup                               controllers.Application.postSignUp()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET         /assets/*file                         controllers.Assets.at(path="/public", file)
 
-GET     /accounts/create/:account_name      controllers.Application.createAccount(account_name: String)
+GET         /accounts/create/:account_name        controllers.Application.createAccount(account_name: String)
 
-GET     /accounts/all             controllers.Application.getAllAccounts()
+GET         /accounts/all                         controllers.Application.getAllAccounts()
 
-POST    /signup                     controllers.Application.postSignUp()
+
