@@ -15,8 +15,18 @@ public class Application extends Controller {
 
 
 
+    @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(index.render());
+        return ok(loggedin.render(request().username()));
+    }
+
+    public static Result logout() {
+        session().clear();
+        return redirect("/login");
+    }
+
+    public static Result login() {
+        return ok(login.render());
     }
     public static Result signUp() {
         return ok(signUp.render());
@@ -27,7 +37,7 @@ public class Application extends Controller {
         if (loginForm.hasErrors()) {
             //send the bad form
             System.out.println("Login Failed!");
-            return badRequest(index.render());
+            return badRequest(login.render());
         } else {
             System.out.println("Login Succeed!");
             session().clear();

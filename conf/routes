@@ -4,7 +4,10 @@
 
 # Home page
 GET         /                                     controllers.Application.index()
-POST    /                                         controllers.Application.authenticate()
+GET         /login                                controllers.Application.login()
+POST        /                                     controllers.Application.authenticate()
+POST        /logout                               controllers.Application.logout()
+
 
 GET         /signup                               controllers.Application.signUp()
 POST        /signup                               controllers.Application.postSignUp()
