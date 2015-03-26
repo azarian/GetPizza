@@ -30,6 +30,11 @@ public class Account extends Model {
     public Account() {
     }
 
+    public Account(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public static Finder<Long,Account> find = new Finder<>(
             Long.class, Account.class
     );
