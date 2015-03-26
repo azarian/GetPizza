@@ -17,7 +17,14 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        return ok(loggedin.render(request().username()));
+        String accountName;
+        try {
+            System.out.println("index: request().username() = " + request().username());
+            accountName = Account.getUserByEmail(request().username());
+            return ok(loggedin.render(accountName));
+        } catch (Account.UserDoesNotExist userDoesNotExist) {
+            return redirect("/login");
+        }
     }
 
     public static Result logout() {

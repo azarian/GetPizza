@@ -20,18 +20,9 @@ import static play.test.Helpers.*;
 
 public class AccountTest extends WithApplication {
 
-
-    private static FakeApplication fakeApplication;
-    private static  DdlGenerator ddl;
-    private static EbeanServer server;
-
-
-
-
-
     @Test
     public void findById() {
-        Account account = new Account(1L,"TestAccount1");
+        Account account = new Account(1L,"TestAccount1","user@domain","password",null);
         account.save();
         Account account2 = Account.find.byId(1L);
         assertThat(account2.id, equalTo(1L));
