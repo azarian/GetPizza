@@ -5,6 +5,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Optional;
 
 /**
  * Created by nazaria on 2/28/2015.
@@ -48,19 +49,11 @@ public class Account extends Model {
         System.out.println("validate:account = " + account);
         return account != null && account.password.equals(password);
     }
-    public static String getUserByEmail(String email) throws UserDoesNotExist {
+    public static Optional<Account> getAccountByEmail(String email)  {
         Account account = Account.find.query().where().eq("email", email).findUnique();
-        if (account != null){
-            return account.name;
-        }
-        System.out.println();
-        String msg = "User with email " + email + " doen't exists!";
-        System.out.println("msg = " + msg);
-        throw new UserDoesNotExist(msg);
+        System.out.println("account = " + account);
+        return account != null ? Optional.of( account) : Optional.empty();
     }
 
-    public static class UserDoesNotExist extends Throwable {
-        public UserDoesNotExist(String msg) {
-        }
-    }
+
 }

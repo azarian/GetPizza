@@ -14,17 +14,11 @@ import java.util.List;
 public class Application extends Controller {
 
 
-
     @Security.Authenticated(Secured.class)
     public static Result index() {
-        String accountName;
-        try {
-            System.out.println("index: request().username() = " + request().username());
-            accountName = Account.getUserByEmail(request().username());
-            return ok(loggedin.render(accountName));
-        } catch (Account.UserDoesNotExist userDoesNotExist) {
-            return redirect("/login");
-        }
+        System.out.println("index: request().username() = " + request().username());
+        return ok(loggedin.render( Account.getAccountByEmail(request().username()).get().name));
+
     }
 
     public static Result logout() {
@@ -35,6 +29,7 @@ public class Application extends Controller {
     public static Result login() {
         return ok(login.render());
     }
+
     public static Result signUp() {
         return ok(signUp.render());
     }
@@ -61,6 +56,7 @@ public class Application extends Controller {
         account.save();
         return ok();
     }
+
     @Security.Authenticated(Secured.class)
     public static Result getAllAccounts() {
         List<Account> accounts = Account.find.all();
@@ -77,12 +73,11 @@ public class Application extends Controller {
             // Don't call formData.get() when there are errors, pass 'null' to helpers instead.
             flash("error", "Please correct errors above.");
             return badRequest();
-        }
-        else {
+        } else {
             System.out.println("Everything is OK");
             Account account = new Account();
             account.name = formData.get().name;
-            account.email= formData.get().email;
+            account.email = formData.get().email;
             account.password = formData.get().password;
             System.out.println("got " + formData.get().name);
             account.save();
