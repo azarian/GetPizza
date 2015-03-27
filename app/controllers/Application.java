@@ -27,7 +27,7 @@ public class Application extends Controller {
     }
 
     public static Result login() {
-        return ok(login.render());
+        return ok(login.render(Form.form(SignInFormDate.class)));
     }
 
     public static Result signUp() {
@@ -39,7 +39,7 @@ public class Application extends Controller {
         if (loginForm.hasErrors()) {
             //send the bad form
             System.out.println("Login Failed!");
-            return badRequest(login.render());
+            return badRequest(login.render(loginForm));
         } else {
             System.out.println("Login Succeed!");
             session().clear();

@@ -1,0 +1,36 @@
+@(loginForm: Form[views.SignInFormDate])
+@import helper._
+
+@form(routes.Application.authenticate(), 'class -> "navbar-form navbar-right") {
+    @if(loginForm.hasGlobalErrors) {
+        <div class="form-group has-error has-feedback">
+            <label class="control-label" for="email">Email</label>
+            <input type="text" class="form-control"  name="email" id="email" aria-describedby="emailStatus">
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+            <span id="emailStatus" class="sr-only">(error)</span>
+        </div>
+        <div class="form-group has-error has-feedback">
+            <label class="control-label" for="password">Password</label>
+            <input type="password" class="form-control"  name="password" id="password" aria-describedby="passwordStatus">
+            <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+            <span id="passwordStatus" class="sr-only">(error)</span>
+        </div>
+
+    }
+    @if(!loginForm.hasGlobalErrors) {
+        <div class="form-group">
+            <label class="control-label" for="email">Email</label>
+            <input type="text" class="form-control"  name="email" id="email" aria-describedby="emailStatus">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="password">Password</label>
+            <input type="password" class="form-control"  name="password" id="password" aria-describedby="passwordStatus">
+        </div>
+
+    }
+
+
+    <button type="submit" class="btn btn-success">Sign in</button>
+    <p class="form-control-static">or</p>
+    <a class="btn btn-link" href="/signup">Sign up</a>
+}

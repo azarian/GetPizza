@@ -1,14 +1,8 @@
-@import helper._
-@index{
-    @form(routes.Application.authenticate(), 'class -> "navbar-form navbar-right") {
-        <div class="form-group">
-            <input type="text" name="email" id="email" placeholder="Email" class="form-control">
-        </div>
-        <div class="form-group">
-            <input type="password" name="password" id="password" placeholder="Password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-success">Sign in</button>
-        <span class="readonly">or</span>
-        <a class="btn btn-link" href="/signup">Sign up</a>
+@(form: Form[views.SignInFormDate])
+
+@main("Get Pizza"){
+
+    @index{
+       @login_form(form)
     }
 }

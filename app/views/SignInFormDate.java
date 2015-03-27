@@ -18,11 +18,9 @@ public class SignInFormDate {
     public String password = "";
 
 
-    public List<ValidationError> validate() {
+    public String validate() {
         if (!Account.validate(email,password)){
-            ArrayList<ValidationError> validationErrors = new ArrayList<>();
-            validationErrors.add(new ValidationError("Invalid user or uassword",""));
-            return validationErrors;
+            return "Invalid user or uassword";
         }
         return null;
     }

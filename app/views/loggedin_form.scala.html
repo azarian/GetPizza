@@ -1,0 +1,6 @@
+@import helper._
+@(name: String)
+@form(routes.Application.logout(), 'class -> "navbar-form navbar-right") {
+    <p class="form-control-static">Hello @name </p>
+    <button type="submit" class="btn btn-link">Logout</button>
+}
