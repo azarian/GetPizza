@@ -44,7 +44,7 @@ public class Application extends Controller {
             System.out.println("Login Succeed!");
             session().clear();
             session("email", loginForm.get().email);
-            return redirect("/accounts/all");
+            return redirect("/");
         }
     }
 
