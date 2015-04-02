@@ -47,6 +47,7 @@ body {
 .carousel {
   height: 500px;
   margin-bottom: 60px;
+  overflow:hidden
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -57,6 +58,7 @@ body {
 .carousel .item {
   height: 500px;
   background-color: #777;
+    overflow:hidden
 }
 .carousel-inner > .item > img {
   position: absolute;
@@ -149,3 +151,4 @@ sign up form
     left: 0;
     z-index: 20;
 }
+
