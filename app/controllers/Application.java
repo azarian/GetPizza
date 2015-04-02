@@ -31,7 +31,7 @@ public class Application extends Controller {
     }
 
     public static Result signUp() {
-        return ok(signUp.render());
+        return ok(signUp.render(Form.form(SignUpFormData.class)));
     }
 
     public static Result authenticate() {
@@ -72,7 +72,7 @@ public class Application extends Controller {
         if (formData.hasErrors()) {
             // Don't call formData.get() when there are errors, pass 'null' to helpers instead.
             flash("error", "Please correct errors above.");
-            return badRequest();
+            return badRequest(signUp.render(formData));
         } else {
             System.out.println("Everything is OK");
             Account account = new Account();
