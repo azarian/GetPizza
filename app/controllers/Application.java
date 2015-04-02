@@ -42,10 +42,14 @@ public class Application extends Controller {
             return badRequest(login.render(loginForm));
         } else {
             System.out.println("Login Succeed!");
-            session().clear();
-            session("email", loginForm.get().email);
+            startSession(loginForm.get().email);
             return redirect("/");
         }
+    }
+
+    private static void startSession(String email) {
+        session().clear();
+        session("email", email);
     }
 
 
@@ -81,7 +85,8 @@ public class Application extends Controller {
             account.password = formData.get().password;
             System.out.println("got " + formData.get().name);
             account.save();
-            return redirect("/accounts/all");
+            startSession(account.email);
+            return redirect("/");
         }
     }
 
